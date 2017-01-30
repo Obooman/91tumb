@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Tumblr/91porn downloader</title>
+</head>
+<body>
+	<input type="text">
+	<script>
+		var oInput = document.querySelector('input');
+
+		oInput.onkeyup = function({keyCode}){
+			if( keyCode != 13 ) return;
+
+			var path = oInput.value;
+
+			if( /tumblr/.test(path) ){
+
+				tumblrHandler(path);
+
+			} else if( /91porn/.test(path) ){
+				porn91Handler(path);
+			} else {
+				console.warn('unsupported site');
+			}
+
+		}
+
+		function tumblrHandler(path){
+			downloader(path);
+		}
+
+		function porn91Handler(path){
+			var frame = document.createElement('iframe');
+			frame.src = `https://www.alltubedownload.net/video?url=${encodeURIComponent(path)}&page=video`;
+
+			frame.style.visiable = 'none';
+
+			document.body.appendChild(frame);
+
+			frame.onload = function(){
+				// TODO
+			}
+		}
+
+		function downloader(path,name){
+			var oA = document.createElement('a');
+			oA.href = path;
+			oA.download = name || true;
+
+			oA.click();
+		}
+	</script>
+</body>
+</html>

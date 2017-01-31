@@ -3,13 +3,40 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Tumblr/91porn downloader</title>
+	<style>
+		html{
+			height: 100%;
+			font-size: 0px;
+			overflow: hidden;
+		}
+
+		body{
+			background-color: #4ADE8F;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			box-sizing: border-box;
+			height: 100%;
+		}
+
+		.button{
+			width: 400px;
+			height: 200px;
+			background-color: #C46290;
+			color: white;
+			text-align: center;
+			line-height: 200px;
+			font-weight: bold;
+			font-size: 40px;
+		}
+	</style>
 </head>
 <body>
-	<input type="text">
+	<div class="button">Download</div>
 	<script>
 		var oInput = document.querySelector('input');
 
-		oInput.onkeyup = function({keyCode}){
+		/*oInput.onkeyup = function({keyCode}){
 			if( keyCode != 13 ) return;
 
 			var path = oInput.value;
@@ -24,7 +51,7 @@
 				console.warn('unsupported site');
 			}
 
-		}
+		}*/
 
 		function tumblrHandler(path){
 			downloader(path);
@@ -49,6 +76,14 @@
 			oA.download = name || true;
 
 			oA.click();
+		}
+
+		window.onfocus = function(){
+			console.log('focus now')
+		}
+
+		window.onblur  = function(){
+			console.log('blur!');
 		}
 	</script>
 </body>
